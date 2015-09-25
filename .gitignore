@@ -1,3 +1,9 @@
 out/
 log/
 tmp/
+*.lof
+*.toc
+*.aux
+*.pdf
+*.swp
+*.swo

@@ -1,0 +1,33 @@
+\section{Document Modification Process}
+\paragraph*{}
+    A formal change management procedure will be followed whenever modifications
+    to this document become necessary. This document is intended to be written in
+    \LaTeX and kept under
+    Git version control. When changes are commited to version control, a record
+    of the changes will automatically be recorded to the revision history within this document and the
+    revision number will automatically be updated accordingly. If a modification to this document
+    locally consists of multiple commits, it is recommended that these commits be
+    squashed into one commit with a meaningful message before being checked into a
+    remote repository.
+
+\paragraph*{}
+    Proposed changes shall be reviewed via pull request. Once
+    accepted, the branch containing the proposed changes shall be merged to master. 
+    Additionally a binary repository containing the PDF file outputs for each official revision
+    shall be made available to all members of the development team. This repository
+    shall be updated automatically upon modification of the master branch. The revision     number of this document shall be updated according to the following rules:
+
+    \begin{enumerate}
+        \item Changes that substantially alter the content of this document shall
+                increment the major version number. A commit message containing the
+                string "major" (not case-sensitive) will automatically increment this
+                number.
+        \item Changes that alter the content of this document shall increment the
+                minor version number. A commit message containing the string "minor"
+                (not case-sensitive) will automatically increment this number.
+        \item Any changes that do not alter the content of this document and make
+                merely cosmetic changes shall increment the patch number.
+                Any commit message not containing the string "major" or "minor" shall be
+                considered a patch and the patch number will be
+                incremented automatically when committed.
+    \end{enumerate}

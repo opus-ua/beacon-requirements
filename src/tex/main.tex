@@ -1,18 +1,42 @@
 \documentclass{article}
+\setlength{\parindent}{0pt}
+\usepackage{geometry}
+\geometry{
+    a4paper,
+    total={210mm,297mm},
+    left=20mm,
+    right=20mm,
+    top=20mm,
+    bottom=20mm
+}
+
+\usepackage{titlesec}
+\setcounter{secnumdepth}{4}
+\newcommand{\subsubsubsection}[1]{\paragraph*{#1}}
 
 \ifx\pdftexversion\undefined
-\usepackage[dvips]{graphicx}
+    \usepackage[dvips]{graphicx}
 \else
-\usepackage[pdftex]{graphicx}
-\DeclareGraphicsRule{*}{mps}{*}{}
+    \usepackage[pdftex]{graphicx}
+    \DeclareGraphicsRule{*}{mps}{*}{}
 \fi
 
-\title{Beacon Requirements Document}
-
 \begin{document}
+    \pagenumbering{gobble}
+    \input{tmp/title.tex}
+    \newpage
 
-\maketitle
+    \input{tmp/revisions.tex}
 
-\section{Example}
-\includegraphics{tmp/example.1}
+    \setcounter{tocdepth}{5}
+    \tableofcontents
+    \listoffigures
+    \newpage
+
+    \pagenumbering{arabic}
+    \input{src/tex/introduction.tex} 
+    \input{src/tex/description.tex}
+    \input{src/tex/requirements.tex}
+    \input{src/tex/modification.tex}
+    \includegraphics{tmp/example.1}
 \end{document}

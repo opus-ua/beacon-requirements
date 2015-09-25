@@ -2,6 +2,5 @@ all: src/tex/* src/uml/*
 	./build.sh
 
 clean:
-	rm -rf out
-	rm -rf log
-	rm -rf tmp
+	rm -rf out log tmp
+	rm -f *.toc *.lof
