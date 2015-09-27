@@ -1,5 +1,50 @@
 \section{Introduction}
+\paragraph*{}
+    This document aims to express the requirements for the Beacon frontend and backend
+    applications. This document describes the high-level and low-level requirements
+    of these applications and the systems on which they will run. A team provided with
+    this document and no other instruction should be capable of completely developing
+    these applications.
 
 \subsection{Goals}
+\paragraph*{}
+    The Beacon social network will provide an interface for anonymous users to post
+    geotagged images along with descriptions. Additionally, Beacon will provide
+    functionality by which users may discuss posts and express support for chosen
+    posts. Beacon will provide an interface by which users may express their opinion
+    that a post is abusive. The system will robustly decide whether a given post
+    is actually abusive and, if so, prune it.
 
 \subsection{Definitions}
+\begin{itemize}
+    \item \textbf{Frontend} - A mobile application providing all user-facing
+        functionality of the Beacon social network. The frontend communicates
+        with the backend in order to retrieve and update information.
+
+    \item \textbf{Backend} - An application running on a remote server with which
+        the Beacon frontend communicates in order to retrieve/update all remote
+        data. The backend consists of a REST interface and a database.
+
+    \item \textbf{Beacon} - A user-generated post consisting of an image, a geotag,
+        a description, and comments submitted by other users. Beacons are presented
+        to the user as icons overlaid on a map.
+
+    \item \textbf{Hearting} - An action by which a user may demonstrate their support
+        for a beacon or comment. This action is called "hearting" because it is
+        carried out by selecting an icon in the shape of a heart.
+
+    \item \textbf{Thread View} - A mode of operation of the Beacon frontend in which
+        the comments for a specific beacon are visible.
+
+    \item \textbf{Map View} - A mode of operation of the Beacon frontend in which
+        local beacons are visible. From Map View, the user may pan and zoom to view
+        different beacons.
+        
+    \item \textbf{Camera View} - A mode of operation of the Beacon frontend in which
+        the user may take a picture and upload it as a new beacon.
+
+    \item \textbf{Profile View} - A mode of operation of the Beacon frontend in which
+        the past beacons and comments posted by an individual user are listed.
+
+\end{itemize}
+    

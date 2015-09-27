@@ -60,8 +60,11 @@ input metauml;
 
     Class.Comment("Comment")
             ("+Comment: String",
-            "+Poster: ID")
-            ("+Flag(Reason, AppUser)");
+            "+Poster: ID",
+            "+ID: ID")
+            ("+Heart(AppUser)",
+            "+Unheart(AppUser)",
+            "+Flag(Reason, AppUser)");
     
     align(right, top, bottom)(5)("-")
             (Thread,
