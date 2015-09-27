@@ -33,7 +33,7 @@ MINOR_VERSION=0
 PATCH_VERSION=0
 COUNT=0
 
-COMMITS=$(git rev-list master --reverse)
+COMMITS=$(git rev-list HEAD --reverse)
 rm -f tmp/revisions.tex
 touch tmp/revisions.tex
 cat src/templates/revisions-head.tex >> tmp/revisions.tex
