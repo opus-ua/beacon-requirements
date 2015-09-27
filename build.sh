@@ -48,6 +48,8 @@ do
         elif [ $(contains_str minor $MSG) == "1" ]; then
             ((MINOR_VERSION++)) 
             PATCH_VERSION=0
+        elif [ $(contains_str ignore $MSG) == "1" ]; then
+            continue
         else
             ((PATCH_VERSION++)) 
         fi

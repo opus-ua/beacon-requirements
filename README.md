@@ -2,7 +2,7 @@ Supported environments are Debian and Ubuntu only.
 
 Install latex and metauml by doing the following.
 
-    sudo apt-get install pdflatex texlive-metapost texlive-latex-extra
+    sudo apt-get install texlive texlive-metapost texlive-latex-extra
 
 
 This project has the following file structure:
