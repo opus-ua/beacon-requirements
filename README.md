@@ -7,6 +7,7 @@ Install latex and metauml by doing the following.
 
 This project has the following file structure:
 
+```
 beacon-requirements
 |-- build.sh
 |-- log
@@ -20,6 +21,7 @@ beacon-requirements
 |   `-- uml
 |       `-- example.mp
 `-- tmp
+```
 
 LaTeX source is stored in src/tex. These documents reference UML
 diagrams stored in src/uml. These documents are written in mpost.
