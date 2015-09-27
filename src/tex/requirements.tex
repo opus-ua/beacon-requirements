@@ -1,45 +1,151 @@
 \section{Requirements}
-    \subsection{Functional Requirements}
-        \subsubsection{Account Creation}
-            \subsubsubsection{Inputs}
-            \subsubsubsection{Processing}
-            \subsubsubsection{Outputs}
-            \subsubsubsection{Error Handling}
-        \subsubsection{Post Beacon}
-            \subsubsubsection{Inputs}
-            \subsubsubsection{Processing}
-            \subsubsubsection{Outputs}
-            \subsubsubsection{Error Handling}
+    \subsection{Functional Requirements - Frontend}
         \subsubsection{View Map}
             \subsubsubsection{Inputs}
+                \textit{Geotag:} The current location of the user.
+
             \subsubsubsection{Processing}
+                Poll the backend for local beacons.
+
             \subsubsubsection{Outputs}
+                The frontend will display a map overlaid with the beacons returned
+                by the backend.
+
             \subsubsubsection{Error Handling}
+                If a geotag cannot be acquired, the frontend will display an error
+                message. \newline
+                If the frontend cannot establish a connection with the backend,
+                an error message will be displayed. \newline
+                If the backend returns a specific error message, a user-friendly
+                version of the message will be displayed.
+
+        \subsubsection{Post Beacon}
+            \subsubsubsection{Inputs}
+                \textit{Image:} A picture taken in-app by the user. \newline
+                \textit{Description:} An optional string describing the image. \newline
+                \textit{Geotag:} The current location of the user.
+
+            \subsubsubsection{Processing}
+                The frontend will submit the provided information to the backend.
+
+            \subsubsubsection{Outputs}
+                The frontend will display the thread view of the newly created beacon.
+
+            \subsubsubsection{Error Handling}
+                If a geotag cannot be acquired, the frontend will display an error
+                message. \newline
+                If the frontend cannot establish a connection with the backend,
+                an error message will be displayed. \newline
+                If the backend returns a specific error message, a user-friendly
+                version of the message will be displayed.
+
         \subsubsection{View Comment Thread}
             \subsubsubsection{Inputs}
+                \textit{Beacon:} The beacon whose comment thread is to be displayed.
+
             \subsubsubsection{Processing}
+                The full comment thread and full-size image will be requested from
+                the backend.
+
             \subsubsubsection{Outputs}
+                The comment thread for the beacon in question will be displayed.
+
             \subsubsubsection{Error Handling}
-        \subsubsection{Heart Beacon}
+                If the frontend cannot establish a connection with the backend,
+                an error message will be displayed. \newline
+                If the backend returns a specific error message, a user-friendly
+                version of the message will be displayed.
+
+        \subsubsection{Heart Post}
             \subsubsubsection{Inputs}
+                \textit{Post:} The post to be hearted.
+
             \subsubsubsection{Processing}
+                A request is sent to the backend to heart the post in question.
+
             \subsubsubsection{Outputs}
+                The heart icon is visually filled.
+
             \subsubsubsection{Error Handling}
+                If the frontend cannot establish a connection with the backend,
+                an error message will be displayed. \newline
+                If the backend returns a specific error message, a user-friendly
+                version of the message will be displayed.
+
         \subsubsection{Post Comment}
             \subsubsubsection{Inputs}
+                \textit{Beacon:} - The beacon to which the comment will be appended.
+                                \newline
+                \textit{Comment:} - The textual body of the comment to be posted.
+
             \subsubsubsection{Processing}
+                The comment is submitted to the backend.
+
             \subsubsubsection{Outputs}
+                The thread is updated to include the newly posted comment.
+
             \subsubsubsection{Error Handling}
+                If the frontend cannot establish a connection with the backend,
+                an error message will be displayed. \newline
+                If the backend returns a specific error message, a user-friendly
+                version of the message will be displayed.
+
         \subsubsection{View User Profile}
             \subsubsubsection{Inputs}
+                \textit{User ID:} - The ID of the user whose profile is to be
+                                        displayed.
+
             \subsubsubsection{Processing}
+                The profile information of the user in question will be requested from
+                the backend.
+
             \subsubsubsection{Outputs}
+                The profile of the requested user will be displayed.
+
             \subsubsubsection{Error Handling}
-        \subsubsection{Flag Comment/Post}
+                If the frontend cannot establish a connection with the backend,
+                an error message will be displayed. \newline
+                If the backend returns a specific error message, a user-friendly
+                version of the message will be displayed.
+
+        \subsubsection{Flag Post}
             \subsubsubsection{Inputs}
+                \textit{Post:} The post to be flagged.
+                \textit{Reason:} The reason that this post is being flagged.
+
             \subsubsubsection{Processing}
+                The flagging is submitted to the backend. 
+
             \subsubsubsection{Outputs}
+                A message indicating that the flag has been submitted is displayed
+                to the user.
+
             \subsubsubsection{Error Handling}
+                If the frontend cannot establish a connection with the backend,
+                an error message will be displayed. \newline
+                If the backend returns a specific error message, a user-friendly
+                version of the message will be displayed.
+
+        \subsubsection{Account Creation}
+            \subsubsubsection{Inputs}
+                \textit{Credentials:} Authorization information generated by a third
+                                        party service. \newline
+                \textit{Username:} The desired username of the new user.
+
+            \subsubsubsection{Processing}
+                A request to create a new account is submitted to the backend.
+
+            \subsubsubsection{Outputs}
+                Upon success, map view is displayed.
+
+            \subsubsubsection{Error Handling}
+                If the frontend cannot establish a connection with the backend,
+                an error message will be displayed. \newline
+                If the backend returns a specific error message, a user-friendly
+                version of the message will be displayed. \newline
+                If an existing user already has the requested username, the new user
+                will be requested to input another username and the submission process
+                is repeated.
 
     \subsection{Use Cases}
         \begin{figure}[H]
@@ -48,22 +154,26 @@
             \caption{Use Case Diagram}
         \end{figure}
 
-        \subsubsection{Account Creation}
-        \subsubsection{Post Beacon}
         \subsubsection{View Map}
+        \subsubsection{Post Beacon}
         \subsubsection{View Comment Thread}
-        \subsubsection{Heart Beacon}
+        \subsubsection{Heart Post}
         \subsubsection{Post Comment}
         \subsubsection{View User Profile}
+        \subsubsection{Follow User}
         \subsubsection{Flag Comment/Post}
+        \subsubsection{Account Creation}
 
 
-    \subsection{Class Diagram}
-        \begin{figure}[H]
-            \centering
-            \includegraphics{tmp/classes.1} 
-            \caption{Frontend Class Diagram}
-        \end{figure}
+    \subsection{Class Diagrams}
+        \subsubsection{Frontend Class Diagram}
+            \begin{figure}[H]
+                \centering
+                \includegraphics{tmp/classes.1} 
+                \caption{Frontend Class Diagram}
+            \end{figure}
+
+        \subsubsection{Backend Class Diagram}
 
     \subsection{Non-functional Requirements}
 

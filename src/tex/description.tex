@@ -1,12 +1,66 @@
 \section{Project Description}
 
     \subsection{Project Perspective}
-        \subsubsection{Account Creation}
-        \subsubsection{Beacon Posting}
-        \subsubsection{View Map}
-        \subsubsection{View Comment Thread}
-        \subsubsection{Heart Beacon}
-        \subsubsection{Post Comment}
-        \subsubsection{View User Profile}
-        \subsubsection{Flag Comment/Post}
+        While the market for social markets is relatively saturated, there remain a
+        few niches yet untouched. One such niche is an open source social network
+        and another is a local, geographically aware social network. Beacon will
+        enable people to discover events and places within their local community.
 
+    \subsection{Functions}
+        \subsubsection{View Map}
+            After login, the frontend will display a map of the user's local area,
+            on which is overlaid beacons in this area. From map view, the user may
+            select individual beacons, which will cause a thumbnail of the beacon to
+            appear. Selecting a thumbnail within map view will cause the frontend to
+            switch to thread view.
+
+        \subsubsection{Post Beacon}
+            From camera view, the user may take a picture of their surroundings.
+            Optionally, a description may accompany this picture. Upon confirmation,
+            the beacon will be uploaded to the backend and made available for other
+            users to view.
+            
+        \subsubsection{View Comment Thread}
+            When a particular beacon is selected from map view, the comment thread for
+            that beacon will be loaded. From thread view, the user may view all
+            comments posted to a particular beacon and may post their own comment on
+            the beacon. Additionally, the user may heart the beacon or any comments,
+            as well as flag the beacon or any comments.
+
+        \subsubsection{Heart Post}
+           From thread view, a user may heart either a beacon or any of the comments
+           associated with it. This is accomplished by selecting an icon in the shape
+           of a heart. At any time, selecting the heart icon on a post that has already
+           been hearted will cause the action of hearting to be rescinded.
+
+        \subsubsection{Post Comment}
+           From thread view, the user may post a comment. This is accomplished by
+           selecting an icon, entering text, and confirming submission of the comment.
+           Once submitted, the comment will become available for other users to view
+           and heart.
+
+        \subsubsection{View User Profile}
+           From thread view, the user may select the username of the poster of the
+           beacon or an associated comment. This will open profile view for that
+           particular user. Displayed in profile view will be a list of all the beacons
+           and comments posted by this user. An individual listing may be selected to
+           opening the corresponding thread view for that particular post.
+
+        \subsubsection{Follow User}
+           From profile view for a particular user, one may select an icon in order
+           to follow the user. This will cause a notification to be pushed whenever
+           the followed user posts a beacon.
+
+        \subsubsection{Flag Comment/Post}
+            From thread view, the beacon or any of its corresponding comments may be
+            flagged by a user as abusive by selecting a flag icon. This information
+            will be submitted to the backend which will make a decision as to whether
+            the post is actually abusive. If it decides that the post is abusive, the
+            post will be removed.
+
+        \subsubsection{Account Creation}
+            Upon first installing the frontend, a user will be prompted to create an
+            account. The system will authenticate using third party services such as
+            Facebook, Google Accounts, or OpenID. Once authenticated by the third party,
+            an account will be created in the Beacon backend associated with the
+            authentication information provided by the third party service.

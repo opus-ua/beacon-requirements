@@ -18,7 +18,8 @@ input metauml;
             ("+User: User",
             "+Posts: Integer[]",
             "+Comments: Integer[]")
-            ();
+            ("+Follow(AppUser)",
+            "+Unfollow(AppUser)");
 
     Class.RestClient("REST Client")
             ()
@@ -28,6 +29,8 @@ input metauml;
             "+PostComment(PostID, String, AppUser)",
             "+Heart(PostID, AppUser)",
             "+Unheart(PostID, AppUser)",
+            "+FollowUser(UserID, AppUser)",
+            "+UnfollowUser(UserID, AppUser)",
             "+Flag(Reason, PostID, AppUser)");
 
     align(left, top, bottom)(5)("-")

@@ -11,7 +11,7 @@ beginfig(1);
     Usecase.ViewUserProfile("View User Profile");
     Usecase.Flag("Flag Comment/Post");
 
-    topToBottom(2)(CreateAccount,
+    topToBottom(6)(CreateAccount,
                     PostBeacon,
                     ViewMap,
                     ViewCommentThread,
@@ -29,16 +29,16 @@ beginfig(1);
             ViewUserProfile,
             Flag);
     
-    top_space := 15;
-    Cases.nw = (100, -1 * top_space);
+    top_space := 25;
+    Cases.nw = (125, -1 * top_space);
     drawObject(Cases);
 
     pair A[];
     margin := 2;
     A[0] := (xpart Cases.w - margin, 0);
     A[1] := (xpart Cases.e + margin, 0);
-    A[2] := (xpart Cases.e + margin, (ypart Cases.s));
-    A[3] := (xpart Cases.w - margin, (ypart Cases.s));
+    A[2] := (xpart Cases.e + margin, (ypart Cases.s) - 4);
+    A[3] := (xpart Cases.w - margin, (ypart Cases.s) - 4);
 
     Actor.User("User");
     User.e = (0, ypart Cases.w);
@@ -67,7 +67,7 @@ beginfig(1);
     link(association)(Backend.w -- Flag.e);
 
     draw A[0]--A[1]--A[2]--A[3]--cycle;
-    label("Android Frontend", (xpart Cases.n, (-top_space / 2.0)))
+    label("Android Frontend", (xpart Cases.n, (-top_space / 3.0)))
     
     endfig;
 end
