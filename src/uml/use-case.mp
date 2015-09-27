@@ -11,13 +11,14 @@ beginfig(1);
     Usecase.ViewUserProfile("View User Profile");
     Usecase.Flag("Flag Comment/Post");
 
-    PostBeacon.n = CreateAccount.s - (0, 2);
-    ViewMap.n = PostBeacon.s - (0, 2);
-    ViewCommentThread.n = ViewMap.s - (0, 2);
-    HeartBeacon.n = ViewCommentThread.s - (0, 2);
-    PostComment.n = HeartBeacon.s - (0, 2);
-    ViewUserProfile.n = PostComment.s - (0, 2);
-    Flag.n = ViewUserProfile.s - (0, 2);
+    topToBottom(2)(CreateAccount,
+                    PostBeacon,
+                    ViewMap,
+                    ViewCommentThread,
+                    HeartBeacon,
+                    PostComment,
+                    ViewUserProfile,
+                    Flag);
 
     Group.Cases(CreateAccount, 
             PostBeacon,
