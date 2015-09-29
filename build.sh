@@ -12,7 +12,6 @@ contains_str ()
     fi
 }
 
-
 # make sure presequisites are installed
 if [ -z $(which mpost) ]; then
     echo "Build process requires mpost to be installed."
