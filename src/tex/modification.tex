@@ -15,10 +15,17 @@
     accepted, the branch containing the proposed changes shall be merged to master. 
     Additionally a binary repository containing the PDF file outputs for each official revision
     shall be made available to all members of the development team. This repository
-    shall be updated automatically upon modification of the master branch. The revision     number of this document shall be updated according to the following rules:
+    shall be updated automatically upon modification of the master branch. The revision
+    number of this document shall be updated according to the following rules:
 
     \begin{enumerate}
-        \item Changes that substantially alter the content of this document shall
+       \item Changes to this repository that do not alter the content of this
+                document at all shall shall be considered framework changes. These
+                commits will contain the string "ignore" (not case-sensitive). These
+                changes will not be included in the revision history within this
+                document, nor will they be included in the calculation of the
+                revision number.
+       \item Changes that substantially alter the content of this document shall
                 increment the major version number. A commit message containing the
                 string "major" (not case-sensitive) will automatically increment this
                 number.
