@@ -4,12 +4,12 @@ beginfig(1);
 
     Usecase.CreateAccount("Create Account");
     Usecase.PostBeacon("Post Beacon");
-    Usecase.ViewMap("View Map");
-    Usecase.ViewCommentThread("View Comment Thread");
+    Usecase.ViewMap("Serve Local Beacons");
+    Usecase.ViewCommentThread("Serve Comment Thread");
     Usecase.HeartBeacon("Heart Beacon");
     Usecase.PostComment("Post Comment");
-    Usecase.ViewUserProfile("View User Profile");
-    Usecase.Flag("Flag Comment/Post");
+    Usecase.ViewUserProfile("Serve User Profile");
+    Usecase.Flag("Flag Post");
 
     topToBottom(6)(CreateAccount,
                     PostBeacon,
@@ -40,13 +40,9 @@ beginfig(1);
     A[2] := (xpart Cases.e + margin, (ypart Cases.s) - 4);
     A[3] := (xpart Cases.w - margin, (ypart Cases.s) - 4);
 
-    Actor.User("User");
+    Actor.User("Frontend");
     User.e = (0, ypart Cases.w);
     drawObject(User);
-
-    Actor.Backend("Backend");
-    Backend.w = (xpart Cases.e + xpart (Cases.w - User.e), ypart Cases.e);
-    drawObject(Backend); 
 
     link(association)(User.e -- CreateAccount.w);
     link(association)(User.e -- PostBeacon.w);
@@ -57,17 +53,8 @@ beginfig(1);
     link(association)(User.e -- ViewUserProfile.w);
     link(association)(User.e -- Flag.w);
 
-    link(association)(Backend.w -- CreateAccount.e);
-    link(association)(Backend.w -- PostBeacon.e);
-    link(association)(Backend.w -- ViewMap.e);
-    link(association)(Backend.w -- ViewCommentThread.e);
-    link(association)(Backend.w -- HeartBeacon.e);
-    link(association)(Backend.w -- PostComment.e);
-    link(association)(Backend.w -- ViewUserProfile.e);
-    link(association)(Backend.w -- Flag.e);
-
     draw A[0]--A[1]--A[2]--A[3]--cycle;
-    label("Android Frontend", (xpart Cases.n, (-top_space / 3.0)))
+    label("Backend Server", (xpart Cases.n, (-top_space / 3.0)))
     
     endfig;
 end

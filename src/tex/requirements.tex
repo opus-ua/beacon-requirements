@@ -14,10 +14,7 @@
             \subsubsubsection{Error Handling}
                 If a geotag cannot be acquired, the frontend will display an error
                 message. \newline
-                If the frontend cannot establish a connection with the backend,
-                an error message will be displayed. \newline
-                If the backend returns a specific error message, a user-friendly
-                version of the message will be displayed.
+                \input{src/tex/generic-error-1.tex}
 
         \subsubsection{Post Beacon}
             \subsubsubsection{Inputs}
@@ -34,10 +31,7 @@
             \subsubsubsection{Error Handling}
                 If a geotag cannot be acquired, the frontend will display an error
                 message. \newline
-                If the frontend cannot establish a connection with the backend,
-                an error message will be displayed. \newline
-                If the backend returns a specific error message, a user-friendly
-                version of the message will be displayed.
+                \input{src/tex/generic-error-1.tex}
 
         \subsubsection{View Comment Thread}
             \subsubsubsection{Inputs}
@@ -51,10 +45,7 @@
                 The comment thread for the beacon in question will be displayed.
 
             \subsubsubsection{Error Handling}
-                If the frontend cannot establish a connection with the backend,
-                an error message will be displayed. \newline
-                If the backend returns a specific error message, a user-friendly
-                version of the message will be displayed.
+                \input{src/tex/generic-error-1.tex}
 
         \subsubsection{Heart Post}
             \subsubsubsection{Inputs}
@@ -67,16 +58,13 @@
                 The heart icon is visually filled.
 
             \subsubsubsection{Error Handling}
-                If the frontend cannot establish a connection with the backend,
-                an error message will be displayed. \newline
-                If the backend returns a specific error message, a user-friendly
-                version of the message will be displayed.
+                \input{src/tex/generic-error-1.tex}
 
         \subsubsection{Post Comment}
             \subsubsubsection{Inputs}
-                \textit{Beacon:} - The beacon to which the comment will be appended.
+                \textit{Beacon:} The beacon to which the comment will be appended.
                                 \newline
-                \textit{Comment:} - The textual body of the comment to be posted.
+                \textit{Comment:} The textual body of the comment to be posted.
 
             \subsubsubsection{Processing}
                 The comment is submitted to the backend.
@@ -85,14 +73,11 @@
                 The thread is updated to include the newly posted comment.
 
             \subsubsubsection{Error Handling}
-                If the frontend cannot establish a connection with the backend,
-                an error message will be displayed. \newline
-                If the backend returns a specific error message, a user-friendly
-                version of the message will be displayed.
+                \input{src/tex/generic-error-1.tex}
 
         \subsubsection{View User Profile}
             \subsubsubsection{Inputs}
-                \textit{User ID:} - The ID of the user whose profile is to be
+                \textit{User ID:} The ID of the user whose profile is to be
                                         displayed.
 
             \subsubsubsection{Processing}
@@ -103,14 +88,11 @@
                 The profile of the requested user will be displayed.
 
             \subsubsubsection{Error Handling}
-                If the frontend cannot establish a connection with the backend,
-                an error message will be displayed. \newline
-                If the backend returns a specific error message, a user-friendly
-                version of the message will be displayed.
+                \input{src/tex/generic-error-1.tex}
 
         \subsubsection{Flag Post}
             \subsubsubsection{Inputs}
-                \textit{Post:} The post to be flagged.
+                \textit{Post:} The post to be flagged. \newline
                 \textit{Reason:} The reason that this post is being flagged.
 
             \subsubsubsection{Processing}
@@ -121,10 +103,7 @@
                 to the user.
 
             \subsubsubsection{Error Handling}
-                If the frontend cannot establish a connection with the backend,
-                an error message will be displayed. \newline
-                If the backend returns a specific error message, a user-friendly
-                version of the message will be displayed.
+                \input{src/tex/generic-error-1.tex}
 
         \subsubsection{Account Creation}
             \subsubsubsection{Inputs}
@@ -139,30 +118,54 @@
                 Upon success, map view is displayed.
 
             \subsubsubsection{Error Handling}
-                If the frontend cannot establish a connection with the backend,
-                an error message will be displayed. \newline
-                If the backend returns a specific error message, a user-friendly
-                version of the message will be displayed. \newline
                 If an existing user already has the requested username, the new user
                 will be requested to input another username and the submission process
-                is repeated.
+                is repeated. \newline
+                \input{src/tex/generic-error-1.tex}
 
     \subsection{Use Cases}
         \begin{figure}[H]
             \centering
-            \includegraphics{tmp/use-case.1} 
-            \caption{Use Case Diagram}
+            \includegraphics{tmp/frontend-use-case.1} 
+            \caption{Frontend Use Case Diagram}
         \end{figure}
 
+        \begin{figure}[H]
+            \centering
+            \includegraphics{tmp/backend-use-case.1} 
+            \caption{Backend Use Case Diagram}
+        \end{figure}
+
+        Note that due to the tight integration between the frontend and backend,
+        the two use case diagrams above mirror each other quite closely.
+        Nearly every action possible within the frontend requires data from the
+        backend and every function of the backend is intended to be used by the
+        frontend.
+
         \subsubsection{View Map}
+        \begin{figure}[H]
+            \centering
+            \includegraphics{tmp/activity-view-map.1} 
+            \caption{Activity Diagram for the View Map use case}
+        \end{figure}
+
+        \paragraph*{}
+        When the user opens map view, the frontend will take a geotag of the device's
+        current location. This geotag is used to construct a REST request
+        for the beacons near these coordinates.
+        The backend receives this REST request and polls the database for the desired
+        beacons. The resulting list is formatted into a REST response and sent back
+        to the frontend. The frontend then displays this list of beacons as icons
+        overlaid on a map.
+
         \subsubsection{Post Beacon}
         \subsubsection{View Comment Thread}
         \subsubsection{Heart Post}
         \subsubsection{Post Comment}
         \subsubsection{View User Profile}
         \subsubsection{Follow User}
-        \subsubsection{Flag Comment/Post}
-        \subsubsection{Account Creation}
+        \subsubsection{Flag Post}
+        \subsubsection{Create Account}
 
 
     \subsection{Class Diagrams}
