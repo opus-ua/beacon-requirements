@@ -146,7 +146,7 @@
         \begin{figure}[H]
             \centering
             \includegraphics{tmp/activity-view-map.1} 
-            \caption{Activity Diagram for the View Map use case}
+            \caption{Activity Diagram - View Map}
         \end{figure}
 
         \paragraph*{}
@@ -159,13 +159,137 @@
         overlaid on a map.
 
         \subsubsection{Post Beacon}
+        \begin{figure}[H]
+            \centering
+            \includegraphics{tmp/activity-post-beacon.1} 
+            \caption{Activity Diagram - Post Beacon}
+        \end{figure}
+
+        \paragraph*{}
+        When the user opens camera view, the frontend will allow them to take a picture
+        of their surroundings. If the user does not like the picture they have taken,
+        they may discard the current picture and take a new one. Next, they will be
+        prompted to enter an optional text description. The user then selects an icon
+        to indicate that they are satisfied with the beacon in its current state. The
+        frontend then takes a geotag and bundles the geotag, image, and text into a
+        REST request, which it sends to the backend. The backend adds this beacon to
+        the database and returns a response indicating success. Finally, the frontend
+        opens the newly created beacon in thread view.
+
         \subsubsection{View Comment Thread}
+        \begin{figure}[H]
+            \centering
+            \includegraphics{tmp/activity-view-thread.1} 
+            \caption{Activity Diagram - View Thread}
+        \end{figure}
+
+        \paragraph*{}
+        When the user selects a beacon or otherwise navigates to thread view, the
+        frontend will construct a REST request for the entire comment thread. The
+        backend receives this request and polls the database for the corresponding
+        beacon, including its image, its description, its popularity, and any 
+        corresponding comments. It bundles this information into a REST response
+        and sends it back to the frontend. The frontend decodes this information
+        and displays the thread.
+
         \subsubsection{Heart Post}
+        \begin{figure}[H]
+            \centering
+            \includegraphics{tmp/activity-heart-post.1} 
+            \caption{Activity Diagram - Heart Post}
+        \end{figure}
+
+        \paragraph*{}
+        Note that this use case is a generalization over two actions: hearting a post
+        and unhearting a post. While the execution flow will be the same between the two
+        actions, there will be two separate URIs present on the backend in order to
+        achieve idempotent behavior.
+
+        \paragraph*{}
+        The user hearts a post by selecting a heart icon. The frontend determines if
+        this action is valid based on its local record of whether the use has already
+        hearted this post. If valid, the frontend constructs a REST request to heart
+        the post and passes the request onto the backend. Next, the backend checks
+        whether hearting this post is valid based on its own records. If not, it
+        returns an error message. If so, it returns success and the frontend visually
+        fills the heart icon.
+
         \subsubsection{Post Comment}
+        \begin{figure}[H]
+            \centering
+            \includegraphics{tmp/activity-post-comment.1} 
+            \caption{Activity Diagram - Post Comment}
+        \end{figure}
+
+        \paragraph*{}
+        When the user opens thread view for a particular post and selects the "add
+        comment" option, they will be prompted with a text box. After entering text
+        and selecting a submit icon, the frontend will construct a REST request
+        containing the new comment and submit it to the backend. The backend will add
+        this comment to the database and associate it with the appropriate beacon.
+        Finally, the backend will return a message indicating success and the frontend
+        will display the newly added comment as part of the thread.
+
         \subsubsection{View User Profile}
+        \begin{figure}[H]
+            \centering
+            \includegraphics{tmp/activity-view-profile.1} 
+            \caption{Activity Diagram - View User Profile}
+        \end{figure}
+
+        \paragraph*{}
+        When the user opens profile view - for example, by selecting a username from
+        thread view - the frontend will request a list of the indicated user's posts
+        from the backend. The backend will poll the database for this list and return
+        it to the frontend as a REST response. Finally, the frontend will display the
+        list.
+
         \subsubsection{Follow User}
+        \begin{figure}[H]
+            \centering
+            \includegraphics{tmp/activity-follow-user.1} 
+            \caption{Activity Diagram - Follow User}
+        \end{figure}
+
+        \paragraph*{}
+        From profile view, the user may select an icon in order to follow a user. Once
+        the icon is selected, the frontend will construct a request to the backend. The
+        backend will add the requesting user to the requested user's list of followers.
+        Finally, the frontend will indicate that the requested user has been followed.
+
         \subsubsection{Flag Post}
+        \begin{figure}[H]
+            \centering
+            \includegraphics{tmp/activity-flag-post.1} 
+            \caption{Activity Diagram - Flag Post}
+        \end{figure}
+
+        \paragraph*{}
+        From thread view, the user may select a flag icon to flag a post as abusive.
+        After selecting the icon, the user will be prompted with a dropdown menu of
+        reasons why they consider this post to be abusive. The frontend will insure
+        that this post has not already been flagged by the user. If it hasn't, it will
+        construct a request for this post to be flagged by the backend. The backend
+        will check that the user has not already flagged this post. If they have not,
+        the backend will increment the number of times this post has been flagged and
+        return a message indicating success to the frontend. Finally, the frontend will
+        indicate to the user that the flagging was successful.
+        
         \subsubsection{Create Account}
+        \begin{figure}[H]
+            \centering
+            \includegraphics{tmp/activity-create-account.1} 
+            \caption{Activity Diagram - Create Account}
+        \end{figure}
+
+        \paragraph*{}
+        When first opening the frontend, the user will be prompted to create a new
+        account. They will be prompted to authenticate using a third party service
+        such as Facebook or Google Accounts. After completing this external
+        authentication process, the frontend will submit the credentials to the
+        backend. The backend will verify these credentials and create a new account,
+        returning a message indicating success to the frontend. Finally, the frontend
+        will open map view.
 
 
     \subsection{Class Diagrams}

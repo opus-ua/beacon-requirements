@@ -23,34 +23,33 @@ iActivity.foreColor := (1.0, 1.0, 1.0);
 iState.foreColor := (1.0, 1.0, 1.0);
 
 width := 100;
-height := 250;
+height := 225;
 state_gap := 20;
 draw_points(width, height)("User", "Frontend", "Backend");
 
 Begin.begin;
 begin.n = (width / 2, height - 30);
-State.OpenApp("Open Map View")();
+State.OpenApp("Open Profile", " View")();
 topToBottom(state_gap)(begin, OpenApp);
 drawObjects(begin, OpenApp);
 link(transition)(begin.s -- OpenApp.n);
 
-State.TakeGeotag("Take Geotag")();
-State.RequestBeacons("Request Local", "Beacons")();
-TakeGeotag.n = (1.5 * width, ypart OpenApp.n);
-topToBottom(state_gap)(TakeGeotag, RequestBeacons);
-drawObjects(TakeGeotag, RequestBeacons);
-link(transition)(OpenApp.e -- TakeGeotag.w);
-link(transition)(TakeGeotag.s -- RequestBeacons.n);
+State.RequestBeacons("Request User", "Info")();
+RequestBeacons.n = (1.5 * width, ypart OpenApp.n);
+drawObject(RequestBeacons);
+link(transition)(OpenApp.e -- RequestBeacons.w);
 
-State.PollDatabase("Poll Database", "")();
-State.ReturnBeacons("Return List", "of Beacons")();
+State.PollDatabase("Poll Database", "for User")();
+State.PollForComments("Poll Database", "for Posts")();
+State.ReturnBeacons("Return Data")();
 PollDatabase.n = (2.5 * width, ypart RequestBeacons.n);
-topToBottom(state_gap)(PollDatabase, ReturnBeacons);
-drawObjects(PollDatabase, ReturnBeacons);
+topToBottom(state_gap)(PollDatabase, PollForComments, ReturnBeacons);
+drawObjects(PollDatabase, PollForComments, ReturnBeacons);
 link(transition)(RequestBeacons.e -- PollDatabase.w);
-link(transition)(PollDatabase.s -- ReturnBeacons.n);
+link(transition)(PollDatabase.s -- PollForComments.n);
+link(transition)(PollForComments.s -- ReturnBeacons.n);
 
-State.DisplayBeacons("Display Beacons", "")();
+State.DisplayBeacons("Display List")();
 DisplayBeacons.n = (1.5 * width, ypart ReturnBeacons.n);
 drawObject(DisplayBeacons);
 link(transition)(ReturnBeacons.w -- DisplayBeacons.e);
