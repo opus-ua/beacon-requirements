@@ -21,7 +21,7 @@ fi
 
 if [ -z $(which pdflatex) ]; then
     echo "Build process requires latex to be installed."
-    echo "Try 'sudo apt-get install texlive-metapost'."
+    echo "Try 'sudo apt-get install texlive'."
     exit 1
 fi
 
