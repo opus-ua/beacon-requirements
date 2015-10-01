@@ -4,11 +4,14 @@ input metauml;
     iClass.foreColor := (1.0, 1.0, 1.0);
 
     Class.Post("Beacon")
-            ("+Image: Image",
+            ("+ID: PostID",
+            "+Image: Image",
             "+Popularity: Integer [1-100]",
             "+Location: Geotag",
             "+Poster ID: Integer",
-            "+Description: String")
+            "+Description: String",
+            "+Hearted: Boolean",
+            "+Flagged: Boolean")
             ("+SetPopularity(Integer)",
             "+Heart(AppUser)",
             "+Unheart(AppUser)",
@@ -64,7 +67,9 @@ input metauml;
     Class.Comment("Comment")
             ("+Comment: String",
             "+Poster: ID",
-            "+ID: ID")
+            "+ID: ID",
+            "+Hearted: Boolean",
+            "+Flagged: Boolean")
             ("+Heart(AppUser)",
             "+Unheart(AppUser)",
             "+Flag(Reason, AppUser)");
