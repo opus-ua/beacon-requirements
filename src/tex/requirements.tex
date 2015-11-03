@@ -123,12 +123,53 @@
                 is repeated. \newline
                 \input{src/tex/generic-error-1.tex}
 
+    \subsection{Non-functional Requirements}
+        \subsubsection{Availability} 
+        Beacon must be available 99.9\% of the time. This amounts to one REST request
+        out of a thousand failing due to Beacon (we will not take responsibility for
+        poor network connectivity, etc). To this end, there must be some degree of data
+        and computing redundancy within the backend.
+
+        \subsubsection{Latency}
+        Actions must seem instantaneous to the user. To this end, no request supplied
+        to the backend will take longer than 300 milliseconds to process. Additionally,
+        any server with an average
+        ping higher than 100 milliseconds from the University of Alabama will be
+        considered insufficient for the needs of the Beacon backend. All factors taken
+        into consideration, no action should take longer than 600 milliseconds.
+
+        \subsubsection{Security}
+        As Beacon is an anonymous app, no user should be able to deduce the identity of
+        any other user. To this end, all communications between the Beacon frontend and
+        backend will occur over SSL. Additionally, a per-user cryptographic
+        authentication method will be utilized.
+
+        \subsubsection{Documentation}
+        Since the Beacon backend implements a REST API that the Beacon frontend will
+        utilize, a readily available document accurately and fully describing the
+        Beacon REST API will be maintained by backend developers. Whenever a change 
+        is made to the API, the document must be updated as well. Additionally, in
+        order to maintain compatibility, a set of automated integration tests will be
+        run to assess the compatibility of each revision of the Beacon backend and
+        frontend as part of a continuous integration system.
+
+        \subsubsection{License}
+        As an open-source project, every component of Beacon will be made publicly
+        available under the GNU Public License, including the backend, frontend, this
+        document, and any other utilities created for the project.
+
     \subsection{Use Cases}
         \begin{figure}[H]
             \centering
             \includegraphics{tmp/frontend-use-case.1} 
             \caption{Frontend Use Case Diagram}
         \end{figure}
+
+        All of Beacon's functionality is accessible to the user via the frontend.
+        When the user selects an operation, the frontend communicates with
+        the backend, requesting that the desired operation be executed. The backend
+        then returns data and the frontend visually reflects the result of the
+        exchange to the user.
 
         \begin{figure}[H]
             \centering
@@ -305,37 +346,4 @@
         This distinction will be merely conceptual in the frontend but will be 
         structural in the backend. 
 
-    \subsection{Non-functional Requirements}
-        \subsubsection{Availability} 
-        Beacon must be available 99.9\% of the time. This amounts to one REST request
-        out of a thousand failing due to Beacon (we will not take responsibility for
-        poor network connectivity, etc). To this end, there must be some degree of data
-        and computing redundancy within the backend.
 
-        \subsubsection{Latency}
-        Actions must seem instantaneous to the user. To this end, no request supplied
-        to the backend will take longer than 300 milliseconds to process. Additionally,
-        any server with an average
-        ping higher than 100 milliseconds from the University of Alabama will be
-        considered insufficient for the needs of the Beacon backend. All factors taken
-        into consideration, no action should take longer than 600 milliseconds.
-
-        \subsubsection{Security}
-        As Beacon is an anonymous app, no user should be able to deduce the identity of
-        any other user. To this end, all communications between the Beacon frontend and
-        backend will occur over SSL. Additionally, a per-user cryptographic
-        authentication method will be utilized.
-
-        \subsubsection{Documentation}
-        Since the Beacon backend implements a REST API that the Beacon frontend will
-        utilize, a readily available document accurately and fully describing the
-        Beacon REST API will be maintained by backend developers. Whenever a change 
-        is made to the API, the document must be updated as well. Additionally, in
-        order to maintain compatibility, a set of automated integration tests will be
-        run to assess the compatibility of each revision of the Beacon backend and
-        frontend as part of a continuous integration system.
-
-        \subsubsection{License}
-        As an open-source project, every component of Beacon will be made publicly
-        available under the GNU Public License, including the backend, frontend, this
-        document, and any other utilities created for the project.
