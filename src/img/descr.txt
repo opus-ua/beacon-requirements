@@ -1,1 +1,0 @@
-Directory for images of sequence diagrams.
